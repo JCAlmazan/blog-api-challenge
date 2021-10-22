@@ -15,8 +15,10 @@ app.use(cors());
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
+// Routes
+require('./routes')(app);
+
 // Default route
-//require('./routes')(app);
 app.get('/', (req, res) => res.status(200).send({
   message: 'Welcome to my Blog API Challenge!',
 }));
