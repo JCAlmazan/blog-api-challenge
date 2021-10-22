@@ -9,5 +9,7 @@ module.exports = (app) => {
   app.get('/posts/:id', postController.findById);
   // Create post route
   app.post('/posts', postController.create);
+  // Update post route
+  app.patch('/posts/:id', postController.update);
   
 };
