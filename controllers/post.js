@@ -32,4 +32,20 @@ module.exports = {
     }
   },
 
+  // Create a new post using body data
+  async create(req, res) {
+    try {
+      const post = await Post.create({
+        title: req.body.title,
+        content: req.body.content,           
+        imageUrl: req.body.imageUrl,
+        categoryId: req.body.categoryId,
+      });
+      res.status(201).send(post);
+    } catch (e) {
+        console.log(e)
+        res.status(400).send(e)
+    }
+  },
+
 }
