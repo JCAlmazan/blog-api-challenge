@@ -40,6 +40,7 @@ module.exports = {
   // Create a new post using body data
   async create(req, res) {
     try {
+      // Check if url given ends with a valid image extension such as .jpg or .png
       const isImage = await isImageURL(req.body.imageUrl);
       if (isImage) {
         const post = await Post.create({
@@ -58,9 +59,19 @@ module.exports = {
     }
   },
 
+
+
   // Update post by id using body data
   async update(req, res) {
     try {
+      // if imageUrl was given at HTTP body
+      if (req.body.imageUrl) {
+        // Check if url given ends with a valid image extension such as .jpg or .png
+        const isImage = await isImageURL(req.body.imageUrl);
+        if (!isImage) {
+          return res.status(400).send("Wrong Url, please enter a valid image url!");          
+        }
+      }
       const post = await Post.findOne({
         where: { id: req.params.id }
       })
