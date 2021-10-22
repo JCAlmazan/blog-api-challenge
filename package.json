@@ -1,0 +1,25 @@
+{
+  "name": "blog-api-challenge",
+  "version": "1.0.0",
+  "description": "",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/JCAlmazan/blog-api-challenge.git"
+  },
+  "keywords": [
+    "blog",
+    "post",
+    "api",
+    "challenge"
+  ],
+  "author": "Juan Cruz Almazan",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/JCAlmazan/blog-api-challenge/issues"
+  },
+  "homepage": "https://github.com/JCAlmazan/blog-api-challenge#readme"
+}
