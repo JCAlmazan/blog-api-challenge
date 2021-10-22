@@ -11,5 +11,7 @@ module.exports = (app) => {
   app.post('/posts', postController.create);
   // Update post route
   app.patch('/posts/:id', postController.update);
-  
+  // Delete post route
+  app.delete('/posts/:id', postController.delete);
+
 };

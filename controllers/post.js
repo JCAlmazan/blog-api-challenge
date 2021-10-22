@@ -70,4 +70,26 @@ module.exports = {
     }
   },
 
+  // Delete specific post by id
+  async delete(req, res) {
+    try {
+      const post = await Post.findOne({
+        where: { id: req.params.id }
+      })
+      if (post) {
+        await Post.destroy({
+          where: {
+            id: req.params.id
+          }
+        })
+        res.status(201).send("Post deleted")
+      } else {
+        res.status(404).send("Post Not Found")
+      }
+    } catch (e) {
+      console.log(e)
+      res.status(400).send(e)
+    }
+  },
+
 }
