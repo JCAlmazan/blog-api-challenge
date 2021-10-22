@@ -37,14 +37,36 @@ module.exports = {
     try {
       const post = await Post.create({
         title: req.body.title,
-        content: req.body.content,           
+        content: req.body.content,
         imageUrl: req.body.imageUrl,
         categoryId: req.body.categoryId,
       });
       res.status(201).send(post);
     } catch (e) {
-        console.log(e)
-        res.status(400).send(e)
+      console.log(e)
+      res.status(400).send(e)
+    }
+  },
+
+  // Update post by id using body data
+  async update(req, res) {
+    try {
+      const post = await Post.findOne({
+        where: { id: req.params.id }
+      })
+      if (post) {
+        await Post.update(req.body, {
+          where: {
+            id: req.params.id
+          }
+        })
+        res.status(201).send("Post updated")
+      } else {
+        res.status(404).send("Post Not Found")
+      }
+    } catch (e) {
+      console.log(e)
+      res.status(400).send(e)
     }
   },
 
