@@ -18,11 +18,11 @@ module.exports = {
   // Find a post by id
   async findById(req, res) {
     try {
-      const posts = await Post.findOne({
-        where: { name: req.params.id }
+      const post = await Post.findOne({
+        where: { id: req.params.id }
       })
-      if (posts) {
-        res.status(201).send(posts)
+      if (post) {
+        res.status(201).send(post)
       } else {
         res.status(404).send("Post Not Found")
       }
