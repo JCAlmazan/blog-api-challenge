@@ -37,8 +37,7 @@ module.exports = {
     try {
       const post = await Post.create({
         title: req.body.title,
-        content: req.body.content,
-        weight: req.body.weight,        
+        content: req.body.content,           
         imageUrl: req.body.imageUrl,
         categoryId: req.body.categoryId,
       });
