@@ -1,4 +1,9 @@
+// Post model
 const Post = require("../models").post;
+
+// Image url validator
+const isImageURL = require('image-url-validator').default;
+
 
 module.exports = {
 
@@ -35,13 +40,19 @@ module.exports = {
   // Create a new post using body data
   async create(req, res) {
     try {
-      const post = await Post.create({
-        title: req.body.title,
-        content: req.body.content,
-        imageUrl: req.body.imageUrl,
-        categoryId: req.body.categoryId,
-      });
-      res.status(201).send(post);
+      // Check if url given ends with a valid image extension such as .jpg or .png
+      const isImage = await isImageURL(req.body.imageUrl);
+      if (isImage) {
+        const post = await Post.create({
+          title: req.body.title,
+          content: req.body.content,
+          imageUrl: req.body.imageUrl,
+          categoryId: req.body.categoryId,
+        });
+        res.status(201).send(post);
+      } else {
+        res.status(400).send("Wrong Url, please enter a valid image url!")
+      }
     } catch (e) {
       console.log(e)
       res.status(400).send(e)
@@ -51,6 +62,14 @@ module.exports = {
   // Update post by id using body data
   async update(req, res) {
     try {
+      // if imageUrl was given at HTTP body
+      if (req.body.imageUrl) {
+        // Check if url given ends with a valid image extension such as .jpg or .png
+        const isImage = await isImageURL(req.body.imageUrl);
+        if (!isImage) {
+          return res.status(400).send("Wrong Url, please enter a valid image url!");          
+        }
+      }
       const post = await Post.findOne({
         where: { id: req.params.id }
       })
