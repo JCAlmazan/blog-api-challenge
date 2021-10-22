@@ -59,8 +59,6 @@ module.exports = {
     }
   },
 
-
-
   // Update post by id using body data
   async update(req, res) {
     try {
