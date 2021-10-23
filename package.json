@@ -1,0 +1,39 @@
+{
+  "name": "blog-api-challenge",
+  "version": "1.0.0",
+  "description": "",
+  "main": "app.js",
+  "scripts": {
+    "setup": "sequelize db:drop && sequelize db:create && sequelize db:migrate && sequelize db:seed:all",
+    "start": "nodemon app.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/JCAlmazan/blog-api-challenge.git"
+  },
+  "keywords": [
+    "blog",
+    "post",
+    "api",
+    "challenge"
+  ],
+  "author": "Juan Cruz Almazan",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/JCAlmazan/blog-api-challenge/issues"
+  },
+  "homepage": "https://github.com/JCAlmazan/blog-api-challenge#readme",
+  "dependencies": {
+    "body-parser": "^1.19.0",
+    "cors": "^2.8.5",
+    "express": "^4.17.1",
+    "image-url-validator": "^1.0.4",
+    "morgan": "^1.10.0",
+    "mysql2": "^2.3.2",
+    "sequelize": "^6.7.0"
+  },
+  "devDependencies": {
+    "nodemon": "^2.0.14"
+  }
+}
