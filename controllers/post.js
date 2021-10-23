@@ -31,7 +31,11 @@ module.exports = {
   async findById(req, res) {
     try {
       const post = await Post.findOne({
-        where: { id: req.params.id }
+        where: { id: req.params.id },
+        include: {
+          model: Category,
+          attributes: ['name']
+        }
       })
       if (post) {
         res.status(201).send(post)
